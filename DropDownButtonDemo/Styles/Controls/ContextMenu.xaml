@@ -1,0 +1,82 @@
+﻿<ResourceDictionary x:Class="DropDownButtonDemo.Styles.Controls.ContextMenuStyle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DropDownButtonDemo.Styles.Controls">
+
+    <Style TargetType="{x:Type ContextMenu}">
+        <!-- Note that the x:Key property must be omitted in order to apply the style implicitly! -->
+
+        <!-- Note that this style is applied only to the toplevel menu of a context menu
+             since submenus are usually implemented as nested menu items! -->
+
+        <Style.Resources>
+
+            <!-- TODO: Style for separators between menu items -->
+
+        </Style.Resources>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+
+                    <Border x:Name="PART_Border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+
+
+                        <StackPanel x:Name="PART_ItemsHost"
+                                    IsItemsHost="True" Grid.IsSharedSizeScope="True"
+                                    KeyboardNavigation.DirectionalNavigation="Cycle"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="HasDropShadow" Value="True">
+                            <Setter TargetName="PART_Border" Property="Effect">
+                                <Setter.Value>
+
+                                    <!-- Dropshadow effect is applied to border instead of parent context menu on purpose!
+                                         This prevents the dropshadow from showing through a transparent context menu! -->
+
+                                    <!-- TODO: Create reusable resources -->
+                                    <DropShadowEffect Color="Black"
+                                          BlurRadius="5" ShadowDepth="0" Direction="270"/>
+
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <EventSetter Event="Opened" Handler="ContextMenu_Opened"/>
+        <EventSetter Event="Closed" Handler="ContextMenu_Closed"/>
+
+        <!-- TODO: Create reusable resources and finish style -->
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="White"/>
+
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="HasDropShadow" Value="True"/>
+
+        <Style.Triggers>
+
+            <Trigger Property="HasDropShadow" Value="True">
+
+                <!-- Additional margin required for dropshadow -->
+                <!-- TODO: Create reusable resources -->
+                <Setter Property="Margin" Value="5"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+</ResourceDictionary>

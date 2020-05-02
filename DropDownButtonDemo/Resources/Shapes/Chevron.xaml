@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DropDownButtonDemo.Resources.Shapes">
+
+    <PathGeometry x:Key="DownwardChevron">
+        <PathFigure IsClosed="False" IsFilled="False" StartPoint="0,0">
+            <PathFigure.Segments>
+                <LineSegment Point="4.5, 4.5"/>
+                <LineSegment Point="9, 0"/>
+            </PathFigure.Segments>
+        </PathFigure>
+    </PathGeometry>
+
+</ResourceDictionary>
